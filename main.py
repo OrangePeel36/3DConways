@@ -181,5 +181,5 @@ else:
 wn = t.Screen()
 wn.bgcolor("black")
 for step in range(1, 101):
-  t.ontimer(run_step(gridwidth, gridheight), 500 * (step + 1))
+  t.ontimer(lambda: run_step(gridwidth, gridheight), 500 * (step + 1))
 wn.mainloop()
