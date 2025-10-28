@@ -151,6 +151,8 @@ def draw_grid(width, height, cell_size, xoffset, yoffset):
 def run_step():
   global indgrid
   global depgrid
+  global gridwidth
+  global gridheight
   indgrid = update_life(indgrid, gridwidth, gridheight)
   print(f"Independent Step {step}:")
   print_grid(indgrid, gridwidth)
