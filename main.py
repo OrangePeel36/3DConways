@@ -42,34 +42,34 @@ def load_grids_from_file(filename="grid_state.json"):
   if not os.path.exists(filename):
     print(f"File {filename} not found. Using random initialization.")
     return None
-  
+
   try:
     with open(filename, 'r') as f:
       grid_state = json.load(f)
-    
+
     width = grid_state.get("width")
     height = grid_state.get("height")
     indgrid = grid_state.get("independent_grid")
     depgrid = grid_state.get("dependent_grid")
-    
+
     if not all([width, height, indgrid, depgrid]):
       print(f"Error: Missing required fields in {filename}. Using random initialization.")
       return None
-    
+
     expected_size = width * height
     if len(indgrid) != expected_size or len(depgrid) != expected_size:
       print(f"Error: Grid size mismatch in {filename}. Expected {expected_size} cells, got {len(indgrid)} and {len(depgrid)}. Using random initialization.")
       return None
-    
+
     if not all(cell in [0, 1] for cell in indgrid + depgrid):
       print(f"Error: Grid cells must be 0 or 1 in {filename}. Using random initialization.")
       return None
-    
+
     print(f"Grid states loaded from {filename}")
     print(f"Grid dimensions: {width}x{height}")
-    
+
     return width, height, indgrid, depgrid
-    
+
   except json.JSONDecodeError as e:
     print(f"Error: Invalid JSON in {filename}: {e}. Using random initialization.")
     return None
@@ -173,7 +173,7 @@ else:
   initialize_grid(indgrid, gridwidth, gridheight, [])
   print("Initial Independent Grid:")
   print_grid(indgrid, gridwidth)
-  
+
   initialize_grid(depgrid, gridwidth, gridheight, [])
   print("Initial Dependent Grid:")
   print_grid(depgrid, gridwidth)
