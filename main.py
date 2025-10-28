@@ -148,11 +148,9 @@ def draw_grid(width, height, cell_size, xoffset, yoffset):
         t.color(cell_color(i, indgrid, depgrid))
         t.stamp()
 
-def run_step():
+def run_step(gridwidth, gridheight):
   global indgrid
   global depgrid
-  global gridwidth
-  global gridheight
   indgrid = update_life(indgrid, gridwidth, gridheight)
   print(f"Independent Step {step}:")
   print_grid(indgrid, gridwidth)
@@ -183,5 +181,5 @@ else:
 wn = t.Screen()
 wn.bgcolor("black")
 for step in range(1, 101):
-  t.ontimer(run_step, 500 * (step + 1))
+  t.ontimer(run_step(gridwidth, gridheight), 500 * (step + 1))
 wn.mainloop()
