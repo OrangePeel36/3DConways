@@ -77,6 +77,9 @@ def load_grids_from_file(filename="grid_state.json"):
     print(f"Error loading {filename}: {e}. Using random initialization.")
     return None
 
+def test_arbitrary():
+    assert 1 + 2 == 3
+
 def initialize_grid(grid, width, height, living):
   # to initialize a grid with random alive cells
   for i in range(width * 2 + 1):  # Set a block of alive cells
